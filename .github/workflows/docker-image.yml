@@ -66,27 +66,27 @@ jobs:
       - name: listar nodos
         run: kubectl get nodes -A
 
-      - name: Crear namespaces
-        run: |
-          namespace=${{ env.namespaces }} ; kubectl get namespace ${{ env.namespaces }} >/dev/null 2>&1 || kubectl create namespace ${{ env.namespaces }}
+    #  - name: Crear namespaces
+    #   run: |
+    #     namespace=${{ env.namespaces }} ; kubectl get namespace ${{ env.namespaces }} >/dev/null 2>&1 || kubectl create namespace ${{ env.namespaces }}
 
       - name: UPDATE IMAGE VOTE
         run: |
-           cd kubernetes
+           cd k8s-specifications
            sed -i "s/TAG/$SHORT_SHA/g" vote-deployment.yaml
            cat vote-deployment.yaml
       - name: UPDATE IMAGE RESULT
         run: |
-           cd kubernetes
+           cd k8s-specifications
            sed -i "s/TAG/$SHORT_SHA/g" result-deployment.yaml
            cat result-deployment.yaml        
       - name: UPDATE IMAGE WORKER
         run: |
-           cd kubernetes
+           cd k8s-specifications
            sed -i "s/TAG/$SHORT_SHA/g" worker-deployment.yaml
            cat worker-deployment.yaml
 
       - name: DEPLOY 
         run: |
-          cd kubernetes
+          cd k8s-specifications
           kubectl apply -f . -n ${{ env.namespaces }} 
