@@ -15,7 +15,7 @@ spec:
         app: result
     spec:
       containers:
-      - image: josepolo01/result:latest
+      - image: josepolo01/result:TAG
         name: result
         ports:
         - containerPort: 80

@@ -15,7 +15,7 @@ spec:
         app: vote
     spec:
       containers:
-      - image: josepolo01/vote:latest
+      - image: josepolo01/vote:TAG
         name: vote
         ports:
         - containerPort: 80

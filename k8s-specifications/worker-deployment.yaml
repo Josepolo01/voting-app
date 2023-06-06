@@ -15,5 +15,5 @@ spec:
         app: worker
     spec:
       containers:
-      - image: josepolo01/worker:latest
+      - image: josepolo01/worker:TAG
         name: worker
